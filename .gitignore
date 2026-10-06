@@ -4,3 +4,5 @@ garmin.db
 garmin.db-*
 fit/
 *.log
+data/
+.env

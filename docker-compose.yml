@@ -1,0 +1,19 @@
+services:
+  garmin-sync:
+    build: .
+    image: garmin-sync
+    container_name: garmin-sync
+    restart: unless-stopped
+    init: true
+    environment:
+      - TZ=${TZ:-Asia/Jerusalem}
+      - SYNC_INTERVAL=${SYNC_INTERVAL:-3600}
+    volumes:
+      - ./data:/data
+    entrypoint: ["sh", "-c"]
+    command:
+      - |
+        while true; do
+          python /app/garmin_sync.py --fit
+          sleep "$$SYNC_INTERVAL"
+        done

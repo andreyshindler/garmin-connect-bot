@@ -1,0 +1,7 @@
+.git
+.venv
+data
+*.db
+fit
+*.log
+__pycache__
